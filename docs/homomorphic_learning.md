@@ -42,11 +42,47 @@ Efficient implementations of FHE are mostly written in high performance language
 * A high-level Python first abstraction layer that makes working with FHE significantly easier.
 * High-level API's for low level functionalities not generally exposed.
 
-In additon to Pyfhel, their exists a plethora of Python wrappers for FHE libraries. Most rely on automatic C++ wrapping tools like [_pybind11_](https://pybind11.readthedocs.io/en/stable/) or Boost. [_PySEAL_](https://arxiv.org/abs/1803.01891) is no-longer maintained pybind11-based wrapper. Many require the user to compile underlying libraries themselves, using the Unix-only toolchain, like more recent [SEAL-Python](https://github.com/Huelse/SEAL-Python). [TenSEAL](https://arxiv.org/abs/2104.03152) which appeared several years after the initial release of Pyfhel shows the most promise. It is pybind11 based and features a one-click setup, but focussed mostly on high level Machine Learning and Tensor operations. Other approaches (e.g., [pyFHE](https://dspace.mit.edu/handle/1721.1/129204)) implement schemes directly in Python, at the cost of significantly slower operations.
+In additon to Pyfhel, their exists a plethora of Python wrappers for FHE libraries. Most rely on automatic C++ wrapping tools like [_pybind11_](https://pybind11.readthedocs.io/en/stable/) or Boost. 
+
+* [_PySEAL_](https://arxiv.org/abs/1803.01891) is no-longer maintained pybind11-based wrapper. Many require the user to compile underlying libraries themselves, using the Unix-only toolchain, like more recent [SEAL-Python](https://github.com/Huelse/SEAL-Python). 
+* [TenSEAL](https://arxiv.org/abs/2104.03152) which appeared several years after the initial release of Pyfhel shows the most promise. It is pybind11 based and features a one-click setup, but focussed mostly on high level Machine Learning and Tensor operations. 
+* [PySyft](https://github.com/OpenMined/PySyft) is OpenMined's open source stack that provides secure and private Data Science in Python. Syft decouples private data from model training, using techniques like Federated Learning, Differential Privacy, and Encrypted Computation. This is done with a numpy-like interface and integration with Deep Learning frameworks, so that you as a Data Scientist can maintain your current workflow while using these new privacy-enhancing techniques.
+* Other approaches (e.g., [pyFHE](https://dspace.mit.edu/handle/1721.1/129204)) implement schemes directly in Python, at the cost of significantly slower operations.
 
 A curated list of amazing homomorphic encryption libraries, software and resources can be found [here](https://github.com/jonaschn/awesome-he). 
 
+We will be performing a comparative study between these opensource python tools and libraries and based on these results, we will create a proof of concept use case that demonstrates a basic homomorphic learning example. 
 
-## Limimtations and Conclusions
+## Federated Learning
+
+Similar to Homomorphic Learning, Federated Learning caters to the problem of not being able to centralize the training data due to data privacy, secrecy, regulatory compliance and heavy volume and loads of data.
+
+### IBM Federated Learning
+
+[IBM Federated Learning](https://ibmfl.mybluemix.net/introduction) supports multiple machine learning models out-of-the-box, including:
+
+* Models written in Keras, PyTorch and TensorFlow
+* Linear classifiers/regressions (with regularizer): logistic regression, linear SVM, ridge regression and more
+* Decision Tree ID3
+* Deep Reinforcement Learning algorithms including DQN, DDPG, PPO and more
+* Naïve Bayes
+
+IBM FL is part of Watson Studio and is available as a service on the cloud here, and you may also use it as part of your Cloud Pak for Data installation. The community edition is a stand-alone library that is suited for academic users, researchers, not for production or commercial use. We will be trying this out as well as a part of tool-evaluation study.
+
+## Limitations and Conclusions
 
 Homomorphic encryption is a very exciting subject with a tremendous potential to disrupt the landscape of online privacy and AI evolution. The urgent need for such a solution is apparant and some of the first use cases has been implemented. Between slow computation speed or accuracy problems, FHE remains commercially infeasible for computationally-heavy applications. There is certainly much progress to be made and many more to come just around the corner. 
+
+## References
+
+1. [A brief history on Homomorphic learning: A privacy-focused approach to machine learning](https://arxiv.org/pdf/2009.04587.pdf)
+2. [https://paperswithcode.com/paper/fully-homomorphically-encrypted-deep-learning](https://paperswithcode.com/paper/fully-homomorphically-encrypted-deep-learning)
+3. [https://towardsdatascience.com/homomorphic-encryption-intro-part-1-overview-and-use-cases-a601adcff06c](https://towardsdatascience.com/homomorphic-encryption-intro-part-1-overview-and-use-cases-a601adcff06c)
+4. [Automated Exploration of Homomorphic Encryption Scheme Input Parameters](https://pdf.sciencedirectassets.com/287016/1-s2.0-S2214212620X00056/1-s2.0-S2214212620307912/am.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAsaCXVzLWVhc3QtMSJHMEUCIQDVcn4UMm%2BYZL4W5Xe8CrtMyEIJMrECxA6FitEKLgfj3gIgFpln7b3FcRCyHJnek65ro9vqCMhiAjl3cizQvNrNPxwq0gQIRBAEGgwwNTkwMDM1NDY4NjUiDNuuBStteWKhAvrW9SqvBLyqMpHvunuBGnzjvd5PvPGxI81er9%2BKqIKfmeKewX5AUU7a4pIlkmBdLVJwjObcOeuoSMV96mUTjWd78Tosqt%2FwHBOnaxe%2BkYtaslLKVa1yQEWSmUGtOUpCAhdvC2K6wwDqgSNdMil2DNbP0sDuDJyvnOzye%2FAYLgsxu7n90L%2BCVZ31HkSfoAlP%2BWiL303yE6RbDK6ph%2BJ0W%2FxX26KR3Sx3zVonyX%2BF0N9p5Hb2w0RXdCLrjxRevyu7AcmQDCi4gHJUJlk8yT%2FIRMD%2BdEBXEtzMSLEDqmXcWpLfSkpD%2B%2FwQ06ESjlFmBHGAc0Mlh0NuJzZDsMm%2BBePZqUSm%2BQU52lD28f9pipGpHFhlGmRP8ljTmPH44NU%2FlvlzGZHoL4AAMHsFK2EZXZzE0Pyrb6BG1YxudSgLj3a6UqgkZ4gsXKbHismXNoUmfdcOTEA8LbEkTVU6XNgFhQcST3Q85Y%2ByXFNdUE8VfTx7tB3Fy4XAxuxkpI8LDg2sunOOx2ZhzL2wfoLGdRlIPIpnVReo14ehgrPnzJPFMbpiGLB0CKxBlyMzS%2BCgJY2MwNPTLaEnlIYSTnA8l%2FV7facoREWpinzevPeH0ge7gisdm6wNr%2BfCMaEUE0O1lpuqDojY83WRDe0Eprm28CJpihkL7RIXsne%2Bonvfm57lP%2B5HLtkSYEi0a0H8B0w1wL6get1Xm3gsJLjZNaxxCAoo04EkTNR8X3rrc2Ma125vMu2ts8vCemTPfTow%2Bv2vlgY6qQHu%2BKYZ6ujQN0fR%2FGJhyMeiRBbYDCnzWxCVvFeqz%2Beo9jr3s%2BvinfYwYxxYSN9lHzgD%2FNvBlFxUzCcIiqV%2FKoN4bNIJGRnfypswcJqKUdlPtnORXgJX%2Fk9dui4PO4kbBLy8l86QEGfP1N0tdQYr6i2UTvPhCWqvXMkHHYS9woM2fxErOUd8yRRCwTtsPlp%2FbCCukkQQSDbY%2Bz5ImEjepVtdA7X2JHFiALOp&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220711T120019Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYTZAHPRBZ%2F20220711%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=a35660880795e45f9174dfa0f95411b873b3d42984321ff363e29c93bec11833&hash=6bf2f6d62557f418804f5cd557c09a783b24aa8b06300f8e1c5687e1092e2278&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2214212620307912&tid=pdf-7034a620-39a7-4d7c-b6f3-09781bfdd2fd&sid=f414b94a6ef3a0423a0b419-f7daedefc7begxrqa&type=client)
+5. [https://avalonlibrary.net/ebooks/David%20Kahn%20-%20The%20Codebreakers.pdf](https://avalonlibrary.net/ebooks/David%20Kahn%20-%20The%20Codebreakers.pdf)
+6. [Multiparty Homomorphic Encryption](https://courses.csail.mit.edu/6.857/2016/files/17.pdf)
+7. [Systematic Review on Fully Homomorphic Encryption Scheme and Its Application | SpringerLink](https://link.springer.com/chapter/10.1007/978-3-030-47411-9_29)
+8. [Privacy Preserving Multi-party Machine Learning with Homomorphic Encryption](https://inspire.cse.unt.edu/sites/default/files/17.pdf)
+9. [Homomorphic Encryption and Federated Learning based Privacy-Preserving CNN Training: COVID-19 Detection Use-Case](https://arxiv.org/abs/2204.07752)
+10. [Fully Homomorphic Encryption Using Ideal Lattices](https://www.cs.cmu.edu/~odonnell/hits09/gentry-homomorphic-encryption.pdf)
+11. [Federated Learning by IBM](https://ibmfl.mybluemix.net/introduction)

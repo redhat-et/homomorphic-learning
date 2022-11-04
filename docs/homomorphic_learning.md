@@ -30,8 +30,25 @@ As mentioned earlier, there are various types of HE but there are various HE sce
   * addition of two ciphertexts
   * multiplication of a ciphertext by a plaintext number
 
-The problem of computing n-th residue classes is believed to be computationally difficult. The decisional composite residuosity assumption is the intractability hypothesis upon which this cryptosystem is based.
-* CKKS
+The problem of computing n-th residue classes is believed to be computationally difficult. The decisional composite residuosity assumption is the intractability hypothesis upon which this cryptosystem is based. In short, it achieves HE with respect to addition by encrypting the message as an exponent of the public key. This way when multiplying two ciphertexts encrypted with the same key the result is a valid encryption of the sum.
+
+* **CKKS** -  Cheon-Kim-Kim-Song (CKKS) scheme, enables to perform computations on vectors of complex values (thus real values as well). CKKS, a.k.a. Homomorphic Encryption for Arithmetic of Approximate Numbers (HEAAN), was proposed to offer homomorphic computation on real numbers. 
+
+The main idea is to consider the noise, a.k.a. error e , which is introduced in Ring-Learning with Errors (Ring-LWE) based FHE schemes for security purposes, as part of the message m (which we call here payload) we want to encrypt. The payload and the noise are combined to generate the plaintext (m + e) that we encrypt.
+
+A message m, a vector of values on which we want to perform certain computation, is first encoded into a plaintext polynomial p(X) and then encrypted using a public key.
+
+Once the message m is encrypted into c,  a couple of polynomials, CKKS provides several operations that can be performed on it, such as addition, multiplication and rotation.
+
+If we denote a function by f, which is a composition of homomorphic operations, then decrypting c’ = f(c) with the secret key will yield p’ = f(p). Therefore once we decode it, we will get m = f(m).
+
+The central idea to implement a homomorphic encryption scheme is to have homomorphic properties on the encoder, decoder, encryptor and decryptor. This way, operations on ciphertext will be decrypted and decoded correctly and provide outputs as if operations were done directly on plaintext.
+
+![image](https://user-images.githubusercontent.com/26301643/200067384-e6ed2793-3670-4414-8f01-3d44a6fe2280.png)
+
+CKKS exploits the rich structure of integer polynomial rings for its plaintext and ciphertext spaces. Nonetheless, data comes more often in the form of vectors than in polynomials.
+
+
 * BFV
 * GSW
 * BGV
@@ -39,8 +56,6 @@ The problem of computing n-th residue classes is believed to be computationally 
 ## Applications
 
 Homomorphic Encryption has various advantages and can be applied to application starting from education and healthcare to smart electric grids and MLaaS (Machine Learning as a service). Basically it can be applied to anywhere where the input data privacy is the most important thing. Anyway the data usage is super complex due to the regulations, privacy concerns and the vitality of the data. Industries and sectors working with non-intrusive and privacy conserving security - detection of secturing breaches etc. Thanks to encryption, all these opertaions, parameters are kept private but often not easily reversible.
-
-// Add diagram or MLaaS
 
 Craig Gentry mentioned in his [thesis](https://crypto.stanford.edu/craig/craig-thesis.pdf) that Full Homomorphic encryption has numerous applications. For example, it enables private queries to a search engine - the user submits an encrypted query and the search engine computes a succinct encrypted answer without ever looking at the query in the clear. It also enables searching an encrypted data - a user stores encrypted files on a remote file server and can later have the server retrieve only files that, when decrypted, satisfy the Boolean constraint, even though the server cannot decrypt the files on its own. More broadly, FHE improves the efficiency of secure multi party computation.
 
@@ -109,4 +124,7 @@ Besides being computationally expensive Homomorphic encryption limits the set of
 9. [Homomorphic Encryption and Federated Learning based Privacy-Preserving CNN Training: COVID-19 Detection Use-Case](https://arxiv.org/abs/2204.07752)
 10. [Fully Homomorphic Encryption Using Ideal Lattices](https://www.cs.cmu.edu/~odonnell/hits09/gentry-homomorphic-encryption.pdf)
 11. [Federated Learning by IBM](https://ibmfl.mybluemix.net/introduction)
-12. [Paillier Cryptosystem](https://en.wikipedia.org/wiki/Paillier_cryptosystem)
+12. [Openminded Blog](https://blog.openmined.org/what-is-homomorphic-encryption/)
+13. [Paillier Cryptosystem](https://en.wikipedia.org/wiki/Paillier_cryptosystem)
+14. [Paillier Scheme](https://link.springer.com/content/pdf/10.1007%2F3-540-48910-X_16.pdf)
+15. [CKKS blog and diagram](https://blog.openmined.org/ckks-explained-part-1-simple-encoding-and-decoding/)

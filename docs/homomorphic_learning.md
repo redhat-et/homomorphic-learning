@@ -25,7 +25,12 @@ HE schemes are classified depending on the possible circuits they can evaluate o
 
 As mentioned earlier, there are various types of HE but there are various HE scemes that can also be categorized into the partial and fully homomorphic. Here are some schemes that are widely known :
 
-* Pallier
+* **Pallier** - The Paillier cryptosystem, invented by Pascal Paillier in 1999, is a partial homomorphic encryption scheme which allows two types of computation:
+
+  * addition of two ciphertexts
+  * multiplication of a ciphertext by a plaintext number
+
+The problem of computing n-th residue classes is believed to be computationally difficult. The decisional composite residuosity assumption is the intractability hypothesis upon which this cryptosystem is based.
 * CKKS
 * BFV
 * GSW
@@ -104,3 +109,4 @@ Besides being computationally expensive Homomorphic encryption limits the set of
 9. [Homomorphic Encryption and Federated Learning based Privacy-Preserving CNN Training: COVID-19 Detection Use-Case](https://arxiv.org/abs/2204.07752)
 10. [Fully Homomorphic Encryption Using Ideal Lattices](https://www.cs.cmu.edu/~odonnell/hits09/gentry-homomorphic-encryption.pdf)
 11. [Federated Learning by IBM](https://ibmfl.mybluemix.net/introduction)
+12. [Paillier Cryptosystem](https://en.wikipedia.org/wiki/Paillier_cryptosystem)

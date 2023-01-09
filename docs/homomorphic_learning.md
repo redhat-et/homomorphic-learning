@@ -64,6 +64,10 @@ There are a few Homomorphic Operations that can be performed by using the BFV sc
 
 * GSW - GSW was developed by Craig Gentry, Amit Sahai, and Brent Waters. GSW uses LWE applied to linear algebra where the messages are encrypted as eigenvalues of matrices which have a common eigenvector. In previous schemes, the homomorphic evaluator needs to obtain the user’s “evaluation key”, which consists of a chain of encrypted secret keys. This scheme has no evaluation key. The evaluator can do homomorphic operations without knowing the user’s public key at all, except for some basic parameters.
 
+The ciphertexts in GSW are square matrices, and homomorphic additions and multiplications are just matrix additions and multiplications, respectively. Therefore, ciphertext dimension always keeps constant and key switching is no longer necessary. Scale-invariance can also be achieved in GSW via the flatten technique; thus modulus switching is also no longer necessary. GSW is simpler and more natural than previous LWE-based FHE schemes. However, matrix multiplication still brings about a high computational cost.
+
+* DM - Ducas and Miccianico proposed a new FHE scheme with homomorphic NOT AND (NAND) gates, which is known as the DM scheme. Homomorphic operations in DM are just ciphertext vector additions, which are very simple operations. However, ciphertexts in DM need to be refreshed after each homomorphic operation, which becomes a bottleneck for the overall efficiency. Although GSW and DM are conceptually simpler than most other FHE schemes, both of them still suffer from efficiency bottlenecks.
+
 * BGV - BGV was developed by Zvika Brakerski,Craig Gentry and Vinod Vaikunathan. It uses modulus switching which is an alternate way to manage noise.
 
 ## Applications
@@ -143,3 +147,4 @@ Besides being computationally expensive Homomorphic encryption limits the set of
 15. [Paillier Scheme](https://link.springer.com/content/pdf/10.1007%2F3-540-48910-X_16.pdf)
 16. [CKKS blog and diagram](https://blog.openmined.org/ckks-explained-part-1-simple-encoding-and-decoding/)
 17. [BGV - Fully Homomorphic Encryption without Bootstrapping](https://eprint.iacr.org/2011/277.pdf)
+18. [A More Efficient Fully Homomorphic Encryption Scheme Based on GSW and DM Schemes](https://www.hindawi.com/journals/scn/2018/8706940/)

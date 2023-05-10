@@ -16,15 +16,12 @@ Overall, Homomorphic Learning/ Encyption provides a secure and efficient way for
 
 _Investigate the state of the art for homomorphic learning, both as a technique for privacy aware machine learning as well as the open source tooling ecosystem around it._
 
-- **Literature survey:** Perform a literature survey on homomorphic learning to understand the state of the art from an abstract technique perspective and create a md file which highlightes different articles/papers along with brief summary of each.
-
+1. **Literature survey:** Perform a literature survey on homomorphic learning to understand the state of the art from an abstract technique perspective and create a md file which highlightes different articles/papers along with brief summary of each.
 [Here](docs/homomorphic_learning.md) are the key takeaways and results from the Literature Survey and some [relevant reserach papers](docs/homomorphic_learning.md#references).
 
-- **Tooling survey:** Perform a tooling survey to understand the landscape of homomorphic learning tooling, with a particular focus on open source tooling. 
+2. **Tooling survey:** Perform a tooling survey to understand the landscape of homomorphic learning tooling, with a particular focus on open source tooling. 
 
-* To get a better understanding of various schemes and there resources, please see this [document](docs/homomorphic_learning.md).
-* To see introductory notebooks for the Open Source Python HE tools, checkout the notebooks [here](notebooks/)
+ * To get a better understanding of various schemes and there resources, please see this [document.](docs/homomorphic_learning.md).
+ * To see introductory notebooks for the Open Source Python HE tools, checkout the notebooks [here.](notebooks/)
 
-- **Proof of concept use case:** Construct a demonstration of a basic homomorphic learning use case.
-
-As a part of the proof of concept, we tried performing Logistic Regression on a heart disease data set. You can find the notebook and the results [here](notebooks/Logistic_regression.ipynb)
+3. **Proof of concept use case:** Construct a demonstration of a basic homomorphic learning use case. As a part of the proof of concept, we tried performing Logistic Regression on a heart disease data set. You can find the notebook and the results [here.](notebooks/Logistic_regression.ipynb)
